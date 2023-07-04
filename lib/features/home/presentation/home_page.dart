@@ -1,6 +1,7 @@
-import 'package:any_link_preview/any_link_preview.dart';
 import 'package:draggable_fab/draggable_fab.dart';
 import 'package:flutter/material.dart';
+import 'package:linkemo/features/home/domain/entity/link_details.dart';
+import 'package:linkemo/features/home/presentation/widgets/link_details_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,12 +19,21 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Card(
-            child: AnyLinkPreview(
+          LinkDetailsList(
+            detailsList: [LinkDetails(
               link: "https://dev.to/mfts/how-to-write-a-perfect-readme-for-your-github-project-59f2",
-              displayDirection: UIDirection.uiDirectionVertical,
+              createdAt: DateTime.now(),
+              description: "Here is the link for yesterday's Sub-SIG introduction. Go through it thoroughly, so that you can plan ahead of time. Let's decide roles and a few other things asap as discussed yesterday.",
+              tags: ["ACM", "GitHub", "C++", "Resume", "Interview", "Sanganitra"]
             ),
+            LinkDetails(
+              link: "https://github.com",
+              createdAt: DateTime.now(),
+              description: "Here is the link for yesterday's Sub-SIG introduction. Go through it thoroughly, so that you can plan ahead of time. Let's decide roles and a few other things asap as discussed yesterday.",
+              tags: ["ACM", "GitHub", "C++", "Resume", "Interview", "Sanganitra"]
+            )]
           )
         ],
       ),
