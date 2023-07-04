@@ -23,8 +23,8 @@ class LinkDetailsCard extends StatelessWidget {
           children: [
             AnyLinkPreview(
               link: details.link,
-              displayDirection: UIDirection.uiDirectionVertical,
-              previewHeight: MediaQuery.of(context).size.height * 0.15,
+              displayDirection: UIDirection.uiDirectionHorizontal,
+              previewHeight: MediaQuery.of(context).size.height * 0.1,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),

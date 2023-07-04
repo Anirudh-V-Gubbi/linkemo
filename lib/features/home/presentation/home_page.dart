@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
         initPosition: Offset(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height * 0.9),
         child: OutlinedButton(
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.purple),
+              backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 21, 49, 87)),
               shape: MaterialStateProperty.all(const CircleBorder()),
               fixedSize:
                   MaterialStateProperty.all(const Size.fromRadius(30.0))),
