@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'LinkEmo',
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color.fromRGBO(18, 18, 18, 1)
+      ),
       home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );

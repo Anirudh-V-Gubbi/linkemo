@@ -21,7 +21,9 @@ class _LinkDetailsListState extends State<LinkDetailsList> {
             shrinkWrap: true,
             itemCount: detailsList!.length,
             itemBuilder: (context, index) {
-              return LinkDetailsCard(details: detailsList![index]);
+              return LinkDetailsCard(
+                details: detailsList![index],
+              );
             },
           )
         : Container();

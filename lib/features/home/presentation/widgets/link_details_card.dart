@@ -11,10 +11,12 @@ class LinkDetailsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      color: Colors.grey[900],
       child: Container(
         padding: const EdgeInsets.all(4.0),
         decoration: BoxDecoration(
-          color: Colors.grey[800],
+          color: Colors.grey[900],
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -31,26 +33,25 @@ class LinkDetailsCard extends StatelessWidget {
                 child: Text(
                   DateFormat('MMM d, y').format(details.createdAt),
                   style: TextStyle(
-                    color: Colors.grey[500],
-                    fontWeight: FontWeight.bold
-                  ),
+                      color: Colors.grey[500], fontWeight: FontWeight.bold),
                 ),
               ),
             ),
             if (details.description != null)
               Padding(
-                padding:
-                    const EdgeInsets.only(top: 4.0, left: 8.0, right: 8.0),
+                padding: const EdgeInsets.only(top: 4.0, left: 8.0, right: 8.0),
                 child: Text(
                   details.description!,
-                  maxLines: 3,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
               ),
             if (details.tags?.isNotEmpty == true)
               Padding(
-                padding: const EdgeInsets.only(left: 0.0, right: 8.0),
+                padding: const EdgeInsets.only(left: 0.0, right: 8.0, top: 4.0),
                 child: ShaderMask(
                   shaderCallback: (Rect rect) {
                     return const LinearGradient(
@@ -75,8 +76,18 @@ class LinkDetailsCard extends StatelessWidget {
                             (e) => Padding(
                               padding: const EdgeInsets.only(left: 8.0),
                               child: Chip(
-                                backgroundColor: Colors.grey[700],
-                                label: Text(e),
+                                shape: const StadiumBorder(
+                                  side: BorderSide(
+                                    color: Color.fromRGBO(26, 91, 141, 1),
+                                  ),
+                                ),
+                                backgroundColor: Colors.grey[900],
+                                label: Text(
+                                  e,
+                                  style: const TextStyle(
+                                    color: Color.fromRGBO(26, 91, 141, 1),
+                                  ),
+                                ),
                               ),
                             ),
                           )
