@@ -18,24 +18,29 @@ class _HomePageState extends State<HomePage> {
         title: const Text("LinkEmo"),
         centerTitle: true,
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          LinkDetailsList(
-            detailsList: [LinkDetails(
-              link: "https://dev.to/mfts/how-to-write-a-perfect-readme-for-your-github-project-59f2",
-              createdAt: DateTime.now(),
-              description: "Here is the link for yesterday's Sub-SIG introduction. Go through it thoroughly, so that you can plan ahead of time. Let's decide roles and a few other things asap as discussed yesterday.",
-              tags: ["ACM", "GitHub", "C++", "Resume", "Interview", "Sanganitra"]
-            ),
-            LinkDetails(
-              link: "https://github.com",
-              createdAt: DateTime.now(),
-              description: "Here is the link for yesterday's Sub-SIG introduction. Go through it thoroughly, so that you can plan ahead of time. Let's decide roles and a few other things asap as discussed yesterday.",
-              tags: ["ACM", "GitHub", "C++", "Resume", "Interview", "Sanganitra"]
-            )]
-          )
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              LinkDetailsList(
+                detailsList: [LinkDetails(
+                  link: "https://dev.to/mfts/how-to-write-a-perfect-readme-for-your-github-project-59f2",
+                  createdAt: DateTime.now(),
+                  description: "Here is the link for yesterday's Sub-SIG introduction. Go through it thoroughly, so that you can plan ahead of time. Let's decide roles and a few other things asap as discussed yesterday.",
+                  tags: ["ACM", "GitHub", "C++", "Resume", "Interview", "Sanganitra"]
+                ),
+                LinkDetails(
+                  link: "https://github.com",
+                  createdAt: DateTime.now(),
+                  description: "Here is the link for yesterday's Sub-SIG introduction. Go through it thoroughly, so that you can plan ahead of time. Let's decide roles and a few other things asap as discussed yesterday.",
+                  tags: ["ACM", "GitHub", "C++", "Resume", "Interview", "Sanganitra"]
+                )]
+              )
+            ],
+          ),
+        ),
       ),
       floatingActionButton: DraggableFab(
         initPosition: Offset(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height * 0.9),
