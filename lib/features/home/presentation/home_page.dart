@@ -1,5 +1,7 @@
 import 'package:draggable_fab/draggable_fab.dart';
 import 'package:flutter/material.dart';
+import 'package:linkemo/core/designs.dart';
+import 'package:linkemo/core/utility.dart';
 import 'package:linkemo/features/home/domain/entity/link_details.dart';
 import 'package:linkemo/features/home/presentation/widgets/link_details_list.dart';
 
@@ -19,7 +21,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        padding: symmetricPadding(horizontal: 12.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -43,17 +45,17 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: DraggableFab(
-        initPosition: Offset(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height * 0.9),
+        initPosition: Offset(deviceWidth(context), deviceHeight(context) * 0.9),
         child: OutlinedButton(
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 21, 49, 87)),
+              backgroundColor: MaterialStateProperty.all(kFabColor),
               shape: MaterialStateProperty.all(const CircleBorder()),
               fixedSize:
-                  MaterialStateProperty.all(const Size.fromRadius(30.0))),
+                  MaterialStateProperty.all(const Size.fromRadius(kFabRadius))),
           child: const Icon(
             Icons.add,
             size: 35.0,
-            color: Colors.white,
+            color: kWhiteColor,
           ),
           onPressed: () {},
         ),

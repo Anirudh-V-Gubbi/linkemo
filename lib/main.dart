@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkemo/core/designs.dart';
 import 'package:linkemo/features/home/presentation/home_page.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'LinkEmo',
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color.fromRGBO(18, 18, 18, 1)
+        scaffoldBackgroundColor: kScaffoldColor
       ),
       home: const HomePage(),
       debugShowCheckedModeBanner: false,
