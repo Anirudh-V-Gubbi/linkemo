@@ -11,12 +11,15 @@ class LinkDetailsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       margin: const EdgeInsets.symmetric(vertical: 8.0),
-      color: Colors.grey[900],
+      color: const Color.fromRGBO(36, 36, 36, 1),
       child: Container(
         padding: const EdgeInsets.all(4.0),
         decoration: BoxDecoration(
-          color: Colors.grey[900],
+          color:  const Color.fromRGBO(36, 36, 36, 1),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
