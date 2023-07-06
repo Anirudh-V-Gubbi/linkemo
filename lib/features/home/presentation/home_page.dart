@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:linkemo/core/designs.dart';
 import 'package:linkemo/core/utility.dart';
 import 'package:linkemo/features/home/domain/entity/link_details.dart';
+import 'package:linkemo/features/home/presentation/widgets/add_link_sheet.dart';
 import 'package:linkemo/features/home/presentation/widgets/link_details_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -57,9 +58,30 @@ class _HomePageState extends State<HomePage> {
             size: 35.0,
             color: kWhiteColor,
           ),
-          onPressed: () {},
+          onPressed: () {
+            addBottomSheet();
+          },
         ),
       ),
+    );
+  }
+
+  void addBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      enableDrag: true,
+      isScrollControlled: true,
+      isDismissible: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: circularBorder(10.0),
+      ),
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return const AddLinkSheet();
+          },
+        );
+      }
     );
   }
 }
