@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:linkemo/core/designs.dart';
 import 'package:linkemo/core/utility.dart';
 import 'package:linkemo/core/widgets/input_text_field.dart';
 
@@ -56,6 +58,46 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                         validator: (String? str) => false,
                       ),
                     ),
+                    ValueListenableBuilder(
+                      valueListenable: tags,
+                      builder: (BuildContext context, List<String> value, _) {
+                        return value.isNotEmpty
+                            ? Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: GridView.extent(
+                                  childAspectRatio: 2,
+                                  crossAxisSpacing: 3,
+                                  mainAxisSpacing: 0,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  maxCrossAxisExtent: 100,
+                                  children: value
+                                      .map((tag) => Chip(
+                                            label: Text(
+                                              tag,
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  color: kWhiteColor,
+                                                  overflow: TextOverflow.clip),
+                                            ),
+                                            backgroundColor: kHighlightColor,
+                                            side: const BorderSide(
+                                                color: kHighlightColor),
+                                            deleteIcon: const Icon(
+                                              CupertinoIcons.clear_circled_solid,
+                                              color: kGreyColor,
+                                              size: 20,
+                                            ),
+                                            onDeleted: () {
+                                              tags.value = List.from(tags.value)..remove(tag);
+                                            },
+                                          ))
+                                      .toList(),
+                                ),
+                            )
+                            : Container();
+                      },
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 12.0),
                       child: InputTextField(
@@ -69,7 +111,7 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                           if (value == null || value.isEmpty) return;
                           if (tags.value.contains(value)) return;
 
-                          tags.value.add(value);
+                          tags.value = List.from(tags.value)..add(value);
                           tagsController.clear();
                         },
                         onEditingComplete: () {},
