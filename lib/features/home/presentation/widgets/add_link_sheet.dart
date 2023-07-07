@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:linkemo/core/designs.dart';
 import 'package:linkemo/core/utility.dart';
 import 'package:linkemo/core/widgets/input_text_field.dart';
+import 'package:linkemo/core/widgets/solid_text_button.dart';
 
 class AddLinkSheet extends StatefulWidget {
   const AddLinkSheet({Key? key}) : super(key: key);
@@ -117,6 +118,10 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                         onEditingComplete: () {},
                       ),
                     ),
+                    SolidTextButton(
+                      text: "Save",
+                      onPressed: () {},
+                    )
                   ],
                 ),
               )
