@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linkemo/core/designs.dart';
 import 'package:linkemo/features/home/presentation/home_page.dart';
 
-void main() {
+void main() async{
+  await Hive.initFlutter();
   runApp(const MyApp());
 }
 
