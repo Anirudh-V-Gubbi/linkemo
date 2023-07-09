@@ -26,6 +26,10 @@ class _LinkDetailsListState extends State<LinkDetailsList> {
               );
             },
           )
-        : Container();
+        : const Center(
+          child: Text(
+            "No Links are currently available"
+          ),
+        );
   }
 }
