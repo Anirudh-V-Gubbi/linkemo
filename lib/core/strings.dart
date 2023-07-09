@@ -1,0 +1,1 @@
+const kAllLinkDetails = "allLinkDetailsBox";
