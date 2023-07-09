@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linkemo/core/designs.dart';
+import 'package:linkemo/features/home/data/model/link_details_model.dart';
 import 'package:linkemo/features/home/presentation/home_page.dart';
 
 void main() async{
   await Hive.initFlutter();
+
+  Hive.registerAdapter(LinkDetailsModelAdapter());
   runApp(const MyApp());
 }
 
