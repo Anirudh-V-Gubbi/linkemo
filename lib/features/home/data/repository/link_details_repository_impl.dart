@@ -10,7 +10,7 @@ class LinkDetailsRepositoryImpl implements LinkDetailsRepository {
   LinkDetailsRepositoryImpl({required this.linkDetailsLocalDatasource});
 
   @override
-  Future<Either<String, LinkDetails>> getAllLinkDetails() async{
+  Future<Either<String, List<LinkDetails>>> getAllLinkDetails() async{
     try {
       final linkDetails = await linkDetailsLocalDatasource.getAllLinkDetails();
       return right(linkDetails);

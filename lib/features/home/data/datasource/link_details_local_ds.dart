@@ -1,21 +1,24 @@
+import 'package:linkemo/core/local_storage.dart';
 import 'package:linkemo/features/home/data/model/link_details_model.dart';
 
 abstract class LinkDetailsLocalDatasource {
-  Future<LinkDetailsModel> getAllLinkDetails();
+  Future<List<LinkDetailsModel>> getAllLinkDetails();
   Future<void> storeLinkDetails(LinkDetailsModel linkDetails); 
 }
 
 class LinkDetailsLocalDatasourceImpl implements LinkDetailsLocalDatasource {
+  final LocalStorage localStorage;
+
+  LinkDetailsLocalDatasourceImpl({required this.localStorage});
+
   @override
-  Future<LinkDetailsModel> getAllLinkDetails() {
-    // TODO: implement getAllLinkDetails
-    throw UnimplementedError();
+  Future<List<LinkDetailsModel>> getAllLinkDetails() async{
+    return (await localStorage.getAllLinkDetails());
   }
 
   @override
-  Future<void> storeLinkDetails(LinkDetailsModel linkDetails) {
-    // TODO: implement storeLinkDetails
-    throw UnimplementedError();
+  Future<void> storeLinkDetails(LinkDetailsModel linkDetails) async{
+    return (await localStorage.storeLinkDetails(linkDetails));
   }
   
 }

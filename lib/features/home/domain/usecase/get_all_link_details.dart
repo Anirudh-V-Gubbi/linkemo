@@ -7,7 +7,7 @@ class GetAllLinkDetails {
 
   GetAllLinkDetails({required this.linkDetailsRepository});
 
-  Future<Either<String, LinkDetails>> call() async{
+  Future<Either<String, List<LinkDetails>>> call() async{
     return (await linkDetailsRepository.getAllLinkDetails());
   }
 }
