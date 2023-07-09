@@ -15,22 +15,23 @@ class LinkHomeBloc extends Bloc<LinkHomeEvent, LinkHomeState> {
   LinkHomeBloc({
     required this.getAllLinkDetails,
     required this.storeLinkDetails,
-  }) : super(const LinkHomeState.loading());
+  }) : super(const LinkHomeState.loading()) {
+    on<_GetAllLinkDetailsEvent>(_GetAllLinkDetailsEventHandler);
+  }
 
-  Stream<LinkHomeState> mapEventToState(LinkHomeEvent event) async* {
-    if (event is _GetAllLinkDetailsEvent) {
-      yield const LinkHomeState.loading();
+  Future<void> _GetAllLinkDetailsEventHandler(
+      _GetAllLinkDetailsEvent event, Emitter<LinkHomeState> emit) async {
+    emit(const LinkHomeState.loading());
 
-      final result = await getAllLinkDetails();
+    final result = await getAllLinkDetails();
 
-      yield* result.fold(
-        (failure) async* {
-          yield LinkHomeState.error(failure);
-        },
-        (linkDetails) async* {
-          yield LinkHomeState.fetchedAllLinkDetials(linkDetails);
-        },
-      );
-    }
+    result.fold(
+      (failure) {
+        emit(LinkHomeState.error(failure));
+      },
+      (linkDetails) {
+        emit(LinkHomeState.fetchedAllLinkDetials(linkDetails));
+      },
+    );
   }
 }
