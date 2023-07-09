@@ -170,32 +170,46 @@ mixin _$LinkHomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function(List<LinkDetails> linkDetails)
+        fetchedAllLinkDetials,
+    required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
+    TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_FetchedAllLinkDetailsState value)
+        fetchedAllLinkDetials,
+    required TResult Function(_ErrorState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult? Function(_ErrorState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -258,6 +272,9 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
+    required TResult Function(List<LinkDetails> linkDetails)
+        fetchedAllLinkDetials,
+    required TResult Function(String message) error,
   }) {
     return loading();
   }
@@ -266,6 +283,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
+    TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function(String message)? error,
   }) {
     return loading?.call();
   }
@@ -274,6 +293,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
+    TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -286,6 +307,9 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadingState value) loading,
+    required TResult Function(_FetchedAllLinkDetailsState value)
+        fetchedAllLinkDetials,
+    required TResult Function(_ErrorState value) error,
   }) {
     return loading(this);
   }
@@ -294,6 +318,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult? Function(_ErrorState value)? error,
   }) {
     return loading?.call(this);
   }
@@ -302,6 +328,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
+    TResult Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -313,4 +341,298 @@ class _$_LoadingState implements _LoadingState {
 
 abstract class _LoadingState implements LinkHomeState {
   const factory _LoadingState() = _$_LoadingState;
+}
+
+/// @nodoc
+abstract class _$$_FetchedAllLinkDetailsStateCopyWith<$Res> {
+  factory _$$_FetchedAllLinkDetailsStateCopyWith(
+          _$_FetchedAllLinkDetailsState value,
+          $Res Function(_$_FetchedAllLinkDetailsState) then) =
+      __$$_FetchedAllLinkDetailsStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<LinkDetails> linkDetails});
+}
+
+/// @nodoc
+class __$$_FetchedAllLinkDetailsStateCopyWithImpl<$Res>
+    extends _$LinkHomeStateCopyWithImpl<$Res, _$_FetchedAllLinkDetailsState>
+    implements _$$_FetchedAllLinkDetailsStateCopyWith<$Res> {
+  __$$_FetchedAllLinkDetailsStateCopyWithImpl(
+      _$_FetchedAllLinkDetailsState _value,
+      $Res Function(_$_FetchedAllLinkDetailsState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? linkDetails = null,
+  }) {
+    return _then(_$_FetchedAllLinkDetailsState(
+      null == linkDetails
+          ? _value._linkDetails
+          : linkDetails // ignore: cast_nullable_to_non_nullable
+              as List<LinkDetails>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
+  const _$_FetchedAllLinkDetailsState(final List<LinkDetails> linkDetails)
+      : _linkDetails = linkDetails;
+
+  final List<LinkDetails> _linkDetails;
+  @override
+  List<LinkDetails> get linkDetails {
+    if (_linkDetails is EqualUnmodifiableListView) return _linkDetails;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_linkDetails);
+  }
+
+  @override
+  String toString() {
+    return 'LinkHomeState.fetchedAllLinkDetials(linkDetails: $linkDetails)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FetchedAllLinkDetailsState &&
+            const DeepCollectionEquality()
+                .equals(other._linkDetails, _linkDetails));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_linkDetails));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FetchedAllLinkDetailsStateCopyWith<_$_FetchedAllLinkDetailsState>
+      get copyWith => __$$_FetchedAllLinkDetailsStateCopyWithImpl<
+          _$_FetchedAllLinkDetailsState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<LinkDetails> linkDetails)
+        fetchedAllLinkDetials,
+    required TResult Function(String message) error,
+  }) {
+    return fetchedAllLinkDetials(linkDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function(String message)? error,
+  }) {
+    return fetchedAllLinkDetials?.call(linkDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (fetchedAllLinkDetials != null) {
+      return fetchedAllLinkDetials(linkDetails);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_FetchedAllLinkDetailsState value)
+        fetchedAllLinkDetials,
+    required TResult Function(_ErrorState value) error,
+  }) {
+    return fetchedAllLinkDetials(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult? Function(_ErrorState value)? error,
+  }) {
+    return fetchedAllLinkDetials?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult Function(_ErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    if (fetchedAllLinkDetials != null) {
+      return fetchedAllLinkDetials(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchedAllLinkDetailsState implements LinkHomeState {
+  const factory _FetchedAllLinkDetailsState(
+      final List<LinkDetails> linkDetails) = _$_FetchedAllLinkDetailsState;
+
+  List<LinkDetails> get linkDetails;
+  @JsonKey(ignore: true)
+  _$$_FetchedAllLinkDetailsStateCopyWith<_$_FetchedAllLinkDetailsState>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ErrorStateCopyWith<$Res> {
+  factory _$$_ErrorStateCopyWith(
+          _$_ErrorState value, $Res Function(_$_ErrorState) then) =
+      __$$_ErrorStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_ErrorStateCopyWithImpl<$Res>
+    extends _$LinkHomeStateCopyWithImpl<$Res, _$_ErrorState>
+    implements _$$_ErrorStateCopyWith<$Res> {
+  __$$_ErrorStateCopyWithImpl(
+      _$_ErrorState _value, $Res Function(_$_ErrorState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$_ErrorState(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ErrorState implements _ErrorState {
+  const _$_ErrorState(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'LinkHomeState.error(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ErrorState &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
+      __$$_ErrorStateCopyWithImpl<_$_ErrorState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<LinkDetails> linkDetails)
+        fetchedAllLinkDetials,
+    required TResult Function(String message) error,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function(String message)? error,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_FetchedAllLinkDetailsState value)
+        fetchedAllLinkDetials,
+    required TResult Function(_ErrorState value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult? Function(_ErrorState value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult Function(_ErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ErrorState implements LinkHomeState {
+  const factory _ErrorState(final String message) = _$_ErrorState;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
