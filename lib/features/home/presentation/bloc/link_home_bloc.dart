@@ -17,6 +17,7 @@ class LinkHomeBloc extends Bloc<LinkHomeEvent, LinkHomeState> {
     required this.storeLinkDetails,
   }) : super(const LinkHomeState.loading()) {
     on<_GetAllLinkDetailsEvent>(_GetAllLinkDetailsEventHandler);
+    on<_StoreLinkDetailsEvent>(_StoreLinkDetailsEventHandler);
   }
 
   Future<void> _GetAllLinkDetailsEventHandler(
@@ -33,5 +34,12 @@ class LinkHomeBloc extends Bloc<LinkHomeEvent, LinkHomeState> {
         emit(LinkHomeState.fetchedAllLinkDetials(linkDetails));
       },
     );
+  }
+
+  Future<void> _StoreLinkDetailsEventHandler(
+      _StoreLinkDetailsEvent event, Emitter<LinkHomeState> emit) async {
+    await storeLinkDetails(event.linkDetails);
+    
+    emit(const LinkHomeState.storedLinkDetails());
   }
 }

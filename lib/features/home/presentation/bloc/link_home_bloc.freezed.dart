@@ -19,32 +19,38 @@ mixin _$LinkHomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllLinkDetails,
+    required TResult Function(LinkDetails linkDetails) storeLinkDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllLinkDetails,
+    TResult? Function(LinkDetails linkDetails)? storeLinkDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllLinkDetails,
+    TResult Function(LinkDetails linkDetails)? storeLinkDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllLinkDetailsEvent value) getAllLinkDetails,
+    required TResult Function(_StoreLinkDetailsEvent value) storeLinkDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetAllLinkDetailsEvent value)? getAllLinkDetails,
+    TResult? Function(_StoreLinkDetailsEvent value)? storeLinkDetails,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllLinkDetailsEvent value)? getAllLinkDetails,
+    TResult Function(_StoreLinkDetailsEvent value)? storeLinkDetails,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,6 +114,7 @@ class _$_GetAllLinkDetailsEvent implements _GetAllLinkDetailsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllLinkDetails,
+    required TResult Function(LinkDetails linkDetails) storeLinkDetails,
   }) {
     return getAllLinkDetails();
   }
@@ -116,6 +123,7 @@ class _$_GetAllLinkDetailsEvent implements _GetAllLinkDetailsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getAllLinkDetails,
+    TResult? Function(LinkDetails linkDetails)? storeLinkDetails,
   }) {
     return getAllLinkDetails?.call();
   }
@@ -124,6 +132,7 @@ class _$_GetAllLinkDetailsEvent implements _GetAllLinkDetailsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllLinkDetails,
+    TResult Function(LinkDetails linkDetails)? storeLinkDetails,
     required TResult orElse(),
   }) {
     if (getAllLinkDetails != null) {
@@ -136,6 +145,7 @@ class _$_GetAllLinkDetailsEvent implements _GetAllLinkDetailsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllLinkDetailsEvent value) getAllLinkDetails,
+    required TResult Function(_StoreLinkDetailsEvent value) storeLinkDetails,
   }) {
     return getAllLinkDetails(this);
   }
@@ -144,6 +154,7 @@ class _$_GetAllLinkDetailsEvent implements _GetAllLinkDetailsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetAllLinkDetailsEvent value)? getAllLinkDetails,
+    TResult? Function(_StoreLinkDetailsEvent value)? storeLinkDetails,
   }) {
     return getAllLinkDetails?.call(this);
   }
@@ -152,6 +163,7 @@ class _$_GetAllLinkDetailsEvent implements _GetAllLinkDetailsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllLinkDetailsEvent value)? getAllLinkDetails,
+    TResult Function(_StoreLinkDetailsEvent value)? storeLinkDetails,
     required TResult orElse(),
   }) {
     if (getAllLinkDetails != null) {
@@ -166,12 +178,149 @@ abstract class _GetAllLinkDetailsEvent implements LinkHomeEvent {
 }
 
 /// @nodoc
+abstract class _$$_StoreLinkDetailsEventCopyWith<$Res> {
+  factory _$$_StoreLinkDetailsEventCopyWith(_$_StoreLinkDetailsEvent value,
+          $Res Function(_$_StoreLinkDetailsEvent) then) =
+      __$$_StoreLinkDetailsEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LinkDetails linkDetails});
+}
+
+/// @nodoc
+class __$$_StoreLinkDetailsEventCopyWithImpl<$Res>
+    extends _$LinkHomeEventCopyWithImpl<$Res, _$_StoreLinkDetailsEvent>
+    implements _$$_StoreLinkDetailsEventCopyWith<$Res> {
+  __$$_StoreLinkDetailsEventCopyWithImpl(_$_StoreLinkDetailsEvent _value,
+      $Res Function(_$_StoreLinkDetailsEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? linkDetails = null,
+  }) {
+    return _then(_$_StoreLinkDetailsEvent(
+      null == linkDetails
+          ? _value.linkDetails
+          : linkDetails // ignore: cast_nullable_to_non_nullable
+              as LinkDetails,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_StoreLinkDetailsEvent implements _StoreLinkDetailsEvent {
+  const _$_StoreLinkDetailsEvent(this.linkDetails);
+
+  @override
+  final LinkDetails linkDetails;
+
+  @override
+  String toString() {
+    return 'LinkHomeEvent.storeLinkDetails(linkDetails: $linkDetails)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StoreLinkDetailsEvent &&
+            (identical(other.linkDetails, linkDetails) ||
+                other.linkDetails == linkDetails));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, linkDetails);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_StoreLinkDetailsEventCopyWith<_$_StoreLinkDetailsEvent> get copyWith =>
+      __$$_StoreLinkDetailsEventCopyWithImpl<_$_StoreLinkDetailsEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getAllLinkDetails,
+    required TResult Function(LinkDetails linkDetails) storeLinkDetails,
+  }) {
+    return storeLinkDetails(linkDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getAllLinkDetails,
+    TResult? Function(LinkDetails linkDetails)? storeLinkDetails,
+  }) {
+    return storeLinkDetails?.call(linkDetails);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getAllLinkDetails,
+    TResult Function(LinkDetails linkDetails)? storeLinkDetails,
+    required TResult orElse(),
+  }) {
+    if (storeLinkDetails != null) {
+      return storeLinkDetails(linkDetails);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetAllLinkDetailsEvent value) getAllLinkDetails,
+    required TResult Function(_StoreLinkDetailsEvent value) storeLinkDetails,
+  }) {
+    return storeLinkDetails(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetAllLinkDetailsEvent value)? getAllLinkDetails,
+    TResult? Function(_StoreLinkDetailsEvent value)? storeLinkDetails,
+  }) {
+    return storeLinkDetails?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetAllLinkDetailsEvent value)? getAllLinkDetails,
+    TResult Function(_StoreLinkDetailsEvent value)? storeLinkDetails,
+    required TResult orElse(),
+  }) {
+    if (storeLinkDetails != null) {
+      return storeLinkDetails(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StoreLinkDetailsEvent implements LinkHomeEvent {
+  const factory _StoreLinkDetailsEvent(final LinkDetails linkDetails) =
+      _$_StoreLinkDetailsEvent;
+
+  LinkDetails get linkDetails;
+  @JsonKey(ignore: true)
+  _$$_StoreLinkDetailsEventCopyWith<_$_StoreLinkDetailsEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$LinkHomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<LinkDetails> linkDetails)
         fetchedAllLinkDetials,
+    required TResult Function() storedLinkDetails,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -179,6 +328,7 @@ mixin _$LinkHomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function()? storedLinkDetails,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -186,6 +336,7 @@ mixin _$LinkHomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function()? storedLinkDetails,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -195,6 +346,7 @@ mixin _$LinkHomeState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_FetchedAllLinkDetailsState value)
         fetchedAllLinkDetials,
+    required TResult Function(_StoredLinkDetailsState value) storedLinkDetails,
     required TResult Function(_ErrorState value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -202,6 +354,7 @@ mixin _$LinkHomeState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult? Function(_StoredLinkDetailsState value)? storedLinkDetails,
     TResult? Function(_ErrorState value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -209,6 +362,7 @@ mixin _$LinkHomeState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
     TResult Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult Function(_StoredLinkDetailsState value)? storedLinkDetails,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) =>
@@ -274,6 +428,7 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function() loading,
     required TResult Function(List<LinkDetails> linkDetails)
         fetchedAllLinkDetials,
+    required TResult Function() storedLinkDetails,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -284,6 +439,7 @@ class _$_LoadingState implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function()? storedLinkDetails,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -294,6 +450,7 @@ class _$_LoadingState implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function()? storedLinkDetails,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -309,6 +466,7 @@ class _$_LoadingState implements _LoadingState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_FetchedAllLinkDetailsState value)
         fetchedAllLinkDetials,
+    required TResult Function(_StoredLinkDetailsState value) storedLinkDetails,
     required TResult Function(_ErrorState value) error,
   }) {
     return loading(this);
@@ -319,6 +477,7 @@ class _$_LoadingState implements _LoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult? Function(_StoredLinkDetailsState value)? storedLinkDetails,
     TResult? Function(_ErrorState value)? error,
   }) {
     return loading?.call(this);
@@ -329,6 +488,7 @@ class _$_LoadingState implements _LoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
     TResult Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult Function(_StoredLinkDetailsState value)? storedLinkDetails,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) {
@@ -421,6 +581,7 @@ class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
     required TResult Function() loading,
     required TResult Function(List<LinkDetails> linkDetails)
         fetchedAllLinkDetials,
+    required TResult Function() storedLinkDetails,
     required TResult Function(String message) error,
   }) {
     return fetchedAllLinkDetials(linkDetails);
@@ -431,6 +592,7 @@ class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function()? storedLinkDetails,
     TResult? Function(String message)? error,
   }) {
     return fetchedAllLinkDetials?.call(linkDetails);
@@ -441,6 +603,7 @@ class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function()? storedLinkDetails,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -456,6 +619,7 @@ class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_FetchedAllLinkDetailsState value)
         fetchedAllLinkDetials,
+    required TResult Function(_StoredLinkDetailsState value) storedLinkDetails,
     required TResult Function(_ErrorState value) error,
   }) {
     return fetchedAllLinkDetials(this);
@@ -466,6 +630,7 @@ class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult? Function(_StoredLinkDetailsState value)? storedLinkDetails,
     TResult? Function(_ErrorState value)? error,
   }) {
     return fetchedAllLinkDetials?.call(this);
@@ -476,6 +641,7 @@ class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
     TResult Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult Function(_StoredLinkDetailsState value)? storedLinkDetails,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) {
@@ -494,6 +660,123 @@ abstract class _FetchedAllLinkDetailsState implements LinkHomeState {
   @JsonKey(ignore: true)
   _$$_FetchedAllLinkDetailsStateCopyWith<_$_FetchedAllLinkDetailsState>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_StoredLinkDetailsStateCopyWith<$Res> {
+  factory _$$_StoredLinkDetailsStateCopyWith(_$_StoredLinkDetailsState value,
+          $Res Function(_$_StoredLinkDetailsState) then) =
+      __$$_StoredLinkDetailsStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_StoredLinkDetailsStateCopyWithImpl<$Res>
+    extends _$LinkHomeStateCopyWithImpl<$Res, _$_StoredLinkDetailsState>
+    implements _$$_StoredLinkDetailsStateCopyWith<$Res> {
+  __$$_StoredLinkDetailsStateCopyWithImpl(_$_StoredLinkDetailsState _value,
+      $Res Function(_$_StoredLinkDetailsState) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_StoredLinkDetailsState implements _StoredLinkDetailsState {
+  const _$_StoredLinkDetailsState();
+
+  @override
+  String toString() {
+    return 'LinkHomeState.storedLinkDetails()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StoredLinkDetailsState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<LinkDetails> linkDetails)
+        fetchedAllLinkDetials,
+    required TResult Function() storedLinkDetails,
+    required TResult Function(String message) error,
+  }) {
+    return storedLinkDetails();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function()? storedLinkDetails,
+    TResult? Function(String message)? error,
+  }) {
+    return storedLinkDetails?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function()? storedLinkDetails,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (storedLinkDetails != null) {
+      return storedLinkDetails();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_FetchedAllLinkDetailsState value)
+        fetchedAllLinkDetials,
+    required TResult Function(_StoredLinkDetailsState value) storedLinkDetails,
+    required TResult Function(_ErrorState value) error,
+  }) {
+    return storedLinkDetails(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult? Function(_StoredLinkDetailsState value)? storedLinkDetails,
+    TResult? Function(_ErrorState value)? error,
+  }) {
+    return storedLinkDetails?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult Function(_StoredLinkDetailsState value)? storedLinkDetails,
+    TResult Function(_ErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    if (storedLinkDetails != null) {
+      return storedLinkDetails(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StoredLinkDetailsState implements LinkHomeState {
+  const factory _StoredLinkDetailsState() = _$_StoredLinkDetailsState;
 }
 
 /// @nodoc
@@ -563,6 +846,7 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function() loading,
     required TResult Function(List<LinkDetails> linkDetails)
         fetchedAllLinkDetials,
+    required TResult Function() storedLinkDetails,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -573,6 +857,7 @@ class _$_ErrorState implements _ErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function()? storedLinkDetails,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -583,6 +868,7 @@ class _$_ErrorState implements _ErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function()? storedLinkDetails,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -598,6 +884,7 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function(_LoadingState value) loading,
     required TResult Function(_FetchedAllLinkDetailsState value)
         fetchedAllLinkDetials,
+    required TResult Function(_StoredLinkDetailsState value) storedLinkDetails,
     required TResult Function(_ErrorState value) error,
   }) {
     return error(this);
@@ -608,6 +895,7 @@ class _$_ErrorState implements _ErrorState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadingState value)? loading,
     TResult? Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult? Function(_StoredLinkDetailsState value)? storedLinkDetails,
     TResult? Function(_ErrorState value)? error,
   }) {
     return error?.call(this);
@@ -618,6 +906,7 @@ class _$_ErrorState implements _ErrorState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadingState value)? loading,
     TResult Function(_FetchedAllLinkDetailsState value)? fetchedAllLinkDetials,
+    TResult Function(_StoredLinkDetailsState value)? storedLinkDetails,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) {
