@@ -17,6 +17,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  BuildContext? blocContext;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,11 +27,21 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       body: BlocProvider<LinkHomeBloc>(
-          create: (_) => sl.get<LinkHomeBloc>()..add(const LinkHomeEvent.getAllLinkDetails()),
+          create: (_) => sl.get<LinkHomeBloc>()
+            ..add(const LinkHomeEvent.getAllLinkDetails()),
           child: BlocConsumer<LinkHomeBloc, LinkHomeState>(
-            listener: (context, state) {},
+            listener: (context, state) {
+              state.maybeMap(
+                storedLinkDetails: (state) {
+                  BlocProvider.of<LinkHomeBloc>(context)
+                      .add(const LinkHomeEvent.getAllLinkDetails());
+                },
+                orElse: () {},
+              );
+            },
             builder: (context, state) {
-              return state.map(loading: (_) {
+              blocContext = context;
+              return state.maybeMap(loading: (_) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
@@ -45,13 +57,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 );
-              },
-              error: (state) {
+              }, error: (state) {
                 return Center(
                   child: Text(state.message),
                 );
-              }
-              );
+              }, orElse: () {
+                return Container();
+              });
             },
           )),
       floatingActionButton: DraggableFab(
@@ -84,10 +96,12 @@ class _HomePageState extends State<HomePage> {
         shape: RoundedRectangleBorder(
           borderRadius: circularBorder(10.0),
         ),
-        builder: (context) {
+        builder: (context2) {
           return StatefulBuilder(
-            builder: (context, setState) {
-              return const AddLinkSheet();
+            builder: (context3, setState) {
+              return AddLinkSheet(
+                blocContext: blocContext ?? context,
+              );
             },
           );
         });

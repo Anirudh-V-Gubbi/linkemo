@@ -1,18 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:linkemo/core/designs.dart';
 import 'package:linkemo/core/utility.dart';
 import 'package:linkemo/core/widgets/input_text_field.dart';
 import 'package:linkemo/core/widgets/solid_text_button.dart';
+import 'package:linkemo/features/home/domain/entity/link_details.dart';
+import 'package:linkemo/features/home/presentation/bloc/link_home_bloc.dart';
 
 class AddLinkSheet extends StatefulWidget {
-  const AddLinkSheet({Key? key}) : super(key: key);
+  const AddLinkSheet({Key? key, required this.blocContext}) : super(key: key);
+
+  final BuildContext blocContext;
 
   @override
   State<AddLinkSheet> createState() => _AddLinkSheetState();
 }
 
 class _AddLinkSheetState extends State<AddLinkSheet> {
+  final GlobalKey<FormState> formkKey = GlobalKey();
+
   final TextEditingController linkController = TextEditingController();
   final TextEditingController descController = TextEditingController();
   final TextEditingController tagsController = TextEditingController();
@@ -28,6 +35,7 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
       ),
       child: SingleChildScrollView(
         child: Form(
+          key: formkKey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -120,7 +128,19 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                     ),
                     SolidTextButton(
                       text: "Save",
-                      onPressed: () {},
+                      onPressed: () {
+                        if(formkKey.currentState?.validate() != true) return;
+                        
+                        Navigator.of(context).pop();
+                        BlocProvider.of<LinkHomeBloc>(widget.blocContext).add(LinkHomeEvent.storeLinkDetails(
+                          LinkDetails(
+                            createdAt: DateTime.now(),
+                            link: linkController.text,
+                            description: descController.text,
+                            tags: tags.value
+                          )
+                        ));
+                      },
                     )
                   ],
                 ),
