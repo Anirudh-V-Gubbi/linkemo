@@ -22,6 +22,11 @@ class LinkDetailsRepositoryImpl implements LinkDetailsRepository {
 
   @override
   Future<void> storeLinkDetails(LinkDetails linkDetails) async{
-    await linkDetailsLocalDatasource.storeLinkDetails(linkDetails as LinkDetailsModel);
+    await linkDetailsLocalDatasource.storeLinkDetails(LinkDetailsModel(
+      link: linkDetails.link,
+      createdAt: linkDetails.createdAt,
+      description: linkDetails.description,
+      tags: linkDetails.tags
+    ));
   }  
 }
