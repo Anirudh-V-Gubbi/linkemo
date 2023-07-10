@@ -18,6 +18,7 @@ class _LinkDetailsListState extends State<LinkDetailsList> {
   Widget build(BuildContext context) {
     return detailsList?.isNotEmpty == true
         ? ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: detailsList!.length,
             itemBuilder: (context, index) {
