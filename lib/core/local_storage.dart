@@ -9,7 +9,7 @@ class LocalStorage {
   }
 
   Future<void> storeLinkDetails(LinkDetailsModel linkDetailsModel) async{
-    var box = await Hive.openBox(kAllLinkDetails);
+    var box = await Hive.openBox<LinkDetailsModel>(kAllLinkDetails);
     await box.add(linkDetailsModel);
     return Future.value();
   }
