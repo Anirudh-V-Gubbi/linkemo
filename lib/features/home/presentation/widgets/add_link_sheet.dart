@@ -47,6 +47,7 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                 padding: symmetricPadding(horizontal: 20.0, vertical: 20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InputTextField(
                       controller: linkController,
@@ -73,14 +74,9 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                         return value.isNotEmpty
                             ? Padding(
                               padding: const EdgeInsets.only(top: 8.0),
-                              child: GridView.extent(
-                                  childAspectRatio: 2,
-                                  crossAxisSpacing: 3,
-                                  mainAxisSpacing: 0,
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  maxCrossAxisExtent: 100,
-                                  children: value
+                              child: Wrap(
+                                spacing: 4.0,
+                                children: value
                                       .map((tag) => Chip(
                                             label: Text(
                                               tag,
@@ -102,7 +98,7 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                                             },
                                           ))
                                       .toList(),
-                                ),
+                              )
                             )
                             : Container();
                       },
@@ -126,21 +122,23 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                         onEditingComplete: () {},
                       ),
                     ),
-                    SolidTextButton(
-                      text: "Save",
-                      onPressed: () {
-                        if(formkKey.currentState?.validate() != true) return;
-                        
-                        Navigator.of(context).pop();
-                        BlocProvider.of<LinkHomeBloc>(widget.blocContext).add(LinkHomeEvent.storeLinkDetails(
-                          LinkDetails(
-                            createdAt: DateTime.now(),
-                            link: linkController.text,
-                            description: descController.text,
-                            tags: tags.value
-                          )
-                        ));
-                      },
+                    Center(
+                      child: SolidTextButton(
+                        text: "Save",
+                        onPressed: () {
+                          if(formkKey.currentState?.validate() != true) return;
+                          
+                          Navigator.of(context).pop();
+                          BlocProvider.of<LinkHomeBloc>(widget.blocContext).add(LinkHomeEvent.storeLinkDetails(
+                            LinkDetails(
+                              createdAt: DateTime.now(),
+                              link: linkController.text,
+                              description: descController.text,
+                              tags: tags.value
+                            )
+                          ));
+                        },
+                      ),
                     )
                   ],
                 ),

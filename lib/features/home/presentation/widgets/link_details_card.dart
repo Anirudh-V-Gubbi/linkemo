@@ -25,6 +25,7 @@ class LinkDetailsCard extends StatelessWidget {
           borderRadius: circularBorder(12),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AnyLinkPreview(
               link: details.link,
@@ -59,46 +60,49 @@ class LinkDetailsCard extends StatelessWidget {
             if (details.tags?.isNotEmpty == true)
               Padding(
                 padding: const EdgeInsets.only(right: 8.0, top: 4.0),
-                child: ShaderMask(
-                  shaderCallback: (Rect rect) {
-                    return const LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        kPurpleColor,
-                        kTransparentColor,
-                        kTransparentColor,
-                        kPurpleColor
-                      ],
-                      stops: [0.0, 0.1, 0.9, 1.0],
-                    ).createShader(rect);
-                  },
-                  blendMode: BlendMode.dstOut,
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: details.tags!
-                          .map(
-                            (e) => Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
-                              child: Chip(
-                                shape: const StadiumBorder(
-                                  side: BorderSide(
-                                    color: kHighlightColor,
+                child: SizedBox(
+                  width: double.maxFinite,
+                  child: ShaderMask(
+                    shaderCallback: (Rect rect) {
+                      return const LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          kPurpleColor,
+                          kTransparentColor,
+                          kTransparentColor,
+                          kPurpleColor
+                        ],
+                        stops: [0.0, 0.1, 0.9, 1.0],
+                      ).createShader(rect);
+                    },
+                    blendMode: BlendMode.dstOut,
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: details.tags!
+                            .map(
+                              (e) => Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Chip(
+                                  shape: const StadiumBorder(
+                                    side: BorderSide(
+                                      color: kHighlightColor,
+                                    ),
                                   ),
-                                ),
-                                backgroundColor: kGreyCardColor,
-                                label: Text(
-                                  e,
-                                  style: const TextStyle(
-                                    color: kHighlightColor,
+                                  backgroundColor: kGreyCardColor,
+                                  label: Text(
+                                    e,
+                                    style: const TextStyle(
+                                      color: kHighlightColor,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-                          .toList(),
+                            )
+                            .toList(),
+                      ),
                     ),
                   ),
                 ),

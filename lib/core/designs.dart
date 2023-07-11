@@ -8,7 +8,7 @@ const kTransparentColor = Colors.transparent;
 const kScaffoldColor = Color.fromRGBO(18, 18, 18, 1);
 const kHighlightColor = Color.fromRGBO(26, 91, 141, 1);
 const kFabColor = Color.fromARGB(255, 21, 49, 87);
-const kGreyCardColor = Color.fromRGBO(36, 36, 36, 1);
+const kGreyCardColor = Color.fromRGBO(40, 40, 40, 1);
 
 // Dimensions
 const kFabRadius = 30.0;
