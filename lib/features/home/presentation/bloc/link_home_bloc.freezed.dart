@@ -318,7 +318,7 @@ mixin _$LinkHomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<LinkDetails> linkDetails)
+    required TResult Function(List<LinkDetails> linkDetails, List<Tag> tags)
         fetchedAllLinkDetials,
     required TResult Function() storedLinkDetails,
     required TResult Function(String message) error,
@@ -327,7 +327,8 @@ mixin _$LinkHomeState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function(List<LinkDetails> linkDetails, List<Tag> tags)?
+        fetchedAllLinkDetials,
     TResult? Function()? storedLinkDetails,
     TResult? Function(String message)? error,
   }) =>
@@ -335,7 +336,8 @@ mixin _$LinkHomeState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function(List<LinkDetails> linkDetails, List<Tag> tags)?
+        fetchedAllLinkDetials,
     TResult Function()? storedLinkDetails,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -426,7 +428,7 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<LinkDetails> linkDetails)
+    required TResult Function(List<LinkDetails> linkDetails, List<Tag> tags)
         fetchedAllLinkDetials,
     required TResult Function() storedLinkDetails,
     required TResult Function(String message) error,
@@ -438,7 +440,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function(List<LinkDetails> linkDetails, List<Tag> tags)?
+        fetchedAllLinkDetials,
     TResult? Function()? storedLinkDetails,
     TResult? Function(String message)? error,
   }) {
@@ -449,7 +452,8 @@ class _$_LoadingState implements _LoadingState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function(List<LinkDetails> linkDetails, List<Tag> tags)?
+        fetchedAllLinkDetials,
     TResult Function()? storedLinkDetails,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -510,7 +514,7 @@ abstract class _$$_FetchedAllLinkDetailsStateCopyWith<$Res> {
           $Res Function(_$_FetchedAllLinkDetailsState) then) =
       __$$_FetchedAllLinkDetailsStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<LinkDetails> linkDetails});
+  $Res call({List<LinkDetails> linkDetails, List<Tag> tags});
 }
 
 /// @nodoc
@@ -526,12 +530,17 @@ class __$$_FetchedAllLinkDetailsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? linkDetails = null,
+    Object? tags = null,
   }) {
     return _then(_$_FetchedAllLinkDetailsState(
       null == linkDetails
           ? _value._linkDetails
           : linkDetails // ignore: cast_nullable_to_non_nullable
               as List<LinkDetails>,
+      null == tags
+          ? _value._tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<Tag>,
     ));
   }
 }
@@ -539,8 +548,10 @@ class __$$_FetchedAllLinkDetailsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
-  const _$_FetchedAllLinkDetailsState(final List<LinkDetails> linkDetails)
-      : _linkDetails = linkDetails;
+  const _$_FetchedAllLinkDetailsState(
+      final List<LinkDetails> linkDetails, final List<Tag> tags)
+      : _linkDetails = linkDetails,
+        _tags = tags;
 
   final List<LinkDetails> _linkDetails;
   @override
@@ -550,9 +561,17 @@ class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
     return EqualUnmodifiableListView(_linkDetails);
   }
 
+  final List<Tag> _tags;
+  @override
+  List<Tag> get tags {
+    if (_tags is EqualUnmodifiableListView) return _tags;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tags);
+  }
+
   @override
   String toString() {
-    return 'LinkHomeState.fetchedAllLinkDetials(linkDetails: $linkDetails)';
+    return 'LinkHomeState.fetchedAllLinkDetials(linkDetails: $linkDetails, tags: $tags)';
   }
 
   @override
@@ -561,12 +580,15 @@ class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
         (other.runtimeType == runtimeType &&
             other is _$_FetchedAllLinkDetailsState &&
             const DeepCollectionEquality()
-                .equals(other._linkDetails, _linkDetails));
+                .equals(other._linkDetails, _linkDetails) &&
+            const DeepCollectionEquality().equals(other._tags, _tags));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_linkDetails));
+      runtimeType,
+      const DeepCollectionEquality().hash(_linkDetails),
+      const DeepCollectionEquality().hash(_tags));
 
   @JsonKey(ignore: true)
   @override
@@ -579,36 +601,38 @@ class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<LinkDetails> linkDetails)
+    required TResult Function(List<LinkDetails> linkDetails, List<Tag> tags)
         fetchedAllLinkDetials,
     required TResult Function() storedLinkDetails,
     required TResult Function(String message) error,
   }) {
-    return fetchedAllLinkDetials(linkDetails);
+    return fetchedAllLinkDetials(linkDetails, tags);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function(List<LinkDetails> linkDetails, List<Tag> tags)?
+        fetchedAllLinkDetials,
     TResult? Function()? storedLinkDetails,
     TResult? Function(String message)? error,
   }) {
-    return fetchedAllLinkDetials?.call(linkDetails);
+    return fetchedAllLinkDetials?.call(linkDetails, tags);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function(List<LinkDetails> linkDetails, List<Tag> tags)?
+        fetchedAllLinkDetials,
     TResult Function()? storedLinkDetails,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (fetchedAllLinkDetials != null) {
-      return fetchedAllLinkDetials(linkDetails);
+      return fetchedAllLinkDetials(linkDetails, tags);
     }
     return orElse();
   }
@@ -654,9 +678,11 @@ class _$_FetchedAllLinkDetailsState implements _FetchedAllLinkDetailsState {
 
 abstract class _FetchedAllLinkDetailsState implements LinkHomeState {
   const factory _FetchedAllLinkDetailsState(
-      final List<LinkDetails> linkDetails) = _$_FetchedAllLinkDetailsState;
+          final List<LinkDetails> linkDetails, final List<Tag> tags) =
+      _$_FetchedAllLinkDetailsState;
 
   List<LinkDetails> get linkDetails;
+  List<Tag> get tags;
   @JsonKey(ignore: true)
   _$$_FetchedAllLinkDetailsStateCopyWith<_$_FetchedAllLinkDetailsState>
       get copyWith => throw _privateConstructorUsedError;
@@ -702,7 +728,7 @@ class _$_StoredLinkDetailsState implements _StoredLinkDetailsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<LinkDetails> linkDetails)
+    required TResult Function(List<LinkDetails> linkDetails, List<Tag> tags)
         fetchedAllLinkDetials,
     required TResult Function() storedLinkDetails,
     required TResult Function(String message) error,
@@ -714,7 +740,8 @@ class _$_StoredLinkDetailsState implements _StoredLinkDetailsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function(List<LinkDetails> linkDetails, List<Tag> tags)?
+        fetchedAllLinkDetials,
     TResult? Function()? storedLinkDetails,
     TResult? Function(String message)? error,
   }) {
@@ -725,7 +752,8 @@ class _$_StoredLinkDetailsState implements _StoredLinkDetailsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function(List<LinkDetails> linkDetails, List<Tag> tags)?
+        fetchedAllLinkDetials,
     TResult Function()? storedLinkDetails,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -844,7 +872,7 @@ class _$_ErrorState implements _ErrorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<LinkDetails> linkDetails)
+    required TResult Function(List<LinkDetails> linkDetails, List<Tag> tags)
         fetchedAllLinkDetials,
     required TResult Function() storedLinkDetails,
     required TResult Function(String message) error,
@@ -856,7 +884,8 @@ class _$_ErrorState implements _ErrorState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult? Function(List<LinkDetails> linkDetails, List<Tag> tags)?
+        fetchedAllLinkDetials,
     TResult? Function()? storedLinkDetails,
     TResult? Function(String message)? error,
   }) {
@@ -867,7 +896,8 @@ class _$_ErrorState implements _ErrorState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<LinkDetails> linkDetails)? fetchedAllLinkDetials,
+    TResult Function(List<LinkDetails> linkDetails, List<Tag> tags)?
+        fetchedAllLinkDetials,
     TResult Function()? storedLinkDetails,
     TResult Function(String message)? error,
     required TResult orElse(),

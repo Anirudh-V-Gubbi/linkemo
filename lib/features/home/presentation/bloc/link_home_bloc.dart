@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:linkemo/features/home/domain/entity/link_details.dart';
+import 'package:linkemo/features/home/domain/entity/tag.dart';
 import 'package:linkemo/features/home/domain/usecase/get_all_link_details.dart';
 import 'package:linkemo/features/home/domain/usecase/get_all_tags.dart';
 import 'package:linkemo/features/home/domain/usecase/store_link_details.dart';
@@ -32,12 +33,21 @@ class LinkHomeBloc extends Bloc<LinkHomeEvent, LinkHomeState> {
 
     final result = await getAllLinkDetails();
 
-    result.fold(
+    await result.fold(
       (failure) {
         emit(LinkHomeState.error(failure));
       },
-      (linkDetails) {
-        emit(LinkHomeState.fetchedAllLinkDetials(linkDetails));
+      (linkDetails) async {
+        final tagResult = await getAllTags();
+        
+        tagResult.fold(
+          (failure) {
+            emit(LinkHomeState.error(failure));
+          },
+          (tags) {
+            emit(LinkHomeState.fetchedAllLinkDetials(linkDetails, tags));
+          }
+        );
       },
     );
   }
