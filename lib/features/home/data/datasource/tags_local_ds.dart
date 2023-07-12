@@ -3,7 +3,7 @@ import 'package:linkemo/features/home/data/model/tag_model.dart';
 
 abstract class TagsLocalDataSource {
   Future<List<TagModel>> getAllTags();
-  Future<void> storeTag(TagModel tag); 
+  Future<void> storeTags(List<TagModel> tag); 
 }
 
 class TagsLocalDataSourceImpl implements TagsLocalDataSource {
@@ -17,7 +17,7 @@ class TagsLocalDataSourceImpl implements TagsLocalDataSource {
   }
 
   @override
-  Future<void> storeTag(TagModel tag) async{
-    return (await localStorage.storeTag(tag));
+  Future<void> storeTags(List<TagModel> tags) async{
+    return (await localStorage.storeTags(tags));
   }
 }

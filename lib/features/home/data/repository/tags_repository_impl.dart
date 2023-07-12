@@ -10,20 +10,18 @@ class TagsRepositoryImpl implements TagsRepository {
   TagsRepositoryImpl({required this.tagsLocalDataSource});
 
   @override
-  Future<Either<String, List<TagModel>>> getAllTags() async{
+  Future<Either<String, List<TagModel>>> getAllTags() async {
     try {
       final tags = await tagsLocalDataSource.getAllTags();
       return right(tags);
-    }
-    catch(e) {
+    } catch (e) {
       return left(e.toString());
     }
   }
 
   @override
-  Future<void> storeTag(Tag tag) async{
-    await tagsLocalDataSource.storeTag(TagModel(
-      name: tag.name
-    ));
-  }  
+  Future<void> storeTags(List<Tag> tags) async {
+    await tagsLocalDataSource
+        .storeTags(tags.map((tag) => TagModel(name: tag.name)).toList());
+  }
 }

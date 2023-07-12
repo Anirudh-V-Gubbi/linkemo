@@ -6,8 +6,8 @@ class StoreTag {
 
   StoreTag({required this.tagsRepository});
 
-  Future<void> call(Tag tag) async{
-    await tagsRepository.storeTag(tag);
+  Future<void> call(List<Tag> tags) async{
+    await tagsRepository.storeTags(tags);
   }
 }
 

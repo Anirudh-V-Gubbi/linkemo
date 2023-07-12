@@ -20,9 +20,9 @@ class LocalStorage {
     return box.values.toList();
   }
 
-  Future<void> storeTag(TagModel tag) async{
+  Future<void> storeTags(List<TagModel> tags) async{
     var box = await Hive.openBox<TagModel>(kAlltags);
-    await box.add(tag);
+    await box.addAll(tags);
     return Future.value();
   }
 }
