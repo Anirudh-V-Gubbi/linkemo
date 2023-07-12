@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:linkemo/features/home/data/model/tag_model.dart';
 import 'package:linkemo/features/home/domain/entity/link_details.dart';
 import 'package:linkemo/features/home/domain/entity/tag.dart';
 import 'package:linkemo/features/home/domain/usecase/get_all_link_details.dart';
@@ -16,6 +17,8 @@ class LinkHomeBloc extends Bloc<LinkHomeEvent, LinkHomeState> {
   final StoreLinkDetails storeLinkDetails;
   final GetAllTags getAllTags;
   final StoreTag storeTag;
+
+  List<Tag> tags = [];
 
   LinkHomeBloc({
     required this.getAllLinkDetails,
@@ -39,15 +42,13 @@ class LinkHomeBloc extends Bloc<LinkHomeEvent, LinkHomeState> {
       },
       (linkDetails) async {
         final tagResult = await getAllTags();
-        
-        tagResult.fold(
-          (failure) {
-            emit(LinkHomeState.error(failure));
-          },
-          (tags) {
-            emit(LinkHomeState.fetchedAllLinkDetials(linkDetails, tags));
-          }
-        );
+
+        tagResult.fold((failure) {
+          emit(LinkHomeState.error(failure));
+        }, (tags) {
+          this.tags = tags;
+          emit(LinkHomeState.fetchedAllLinkDetials(linkDetails, tags));
+        });
       },
     );
   }
@@ -55,7 +56,13 @@ class LinkHomeBloc extends Bloc<LinkHomeEvent, LinkHomeState> {
   Future<void> _StoreLinkDetailsEventHandler(
       _StoreLinkDetailsEvent event, Emitter<LinkHomeState> emit) async {
     await storeLinkDetails(event.linkDetails);
-    
+
+    final List<Tag> newTags = List.from(event.linkDetails.tags ?? []);
+    newTags.removeWhere((ele) => tags.contains(TagModel(name: ele.name)));
+    if (newTags.isNotEmpty) {
+      await storeTag(newTags);
+    }
+
     emit(const LinkHomeState.storedLinkDetails());
   }
 }

@@ -52,6 +52,23 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        Wrap(
+                          spacing: 4.0,
+                          children: state.tags
+                              .map((tag) => Chip(
+                                    label: Text(
+                                      tag.name,
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          color: kWhiteColor,
+                                          overflow: TextOverflow.clip),
+                                    ),
+                                    backgroundColor: kHighlightColor,
+                                    side: const BorderSide(
+                                        color: kHighlightColor),
+                                  ))
+                              .toList(),
+                        ),
                         LinkDetailsList(detailsList: state.linkDetails)
                       ],
                     ),
