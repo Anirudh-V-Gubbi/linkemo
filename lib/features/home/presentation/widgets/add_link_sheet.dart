@@ -6,6 +6,7 @@ import 'package:linkemo/core/utility.dart';
 import 'package:linkemo/core/widgets/input_text_field.dart';
 import 'package:linkemo/core/widgets/solid_text_button.dart';
 import 'package:linkemo/features/home/domain/entity/link_details.dart';
+import 'package:linkemo/features/home/domain/entity/tag.dart';
 import 'package:linkemo/features/home/presentation/bloc/link_home_bloc.dart';
 
 class AddLinkSheet extends StatefulWidget {
@@ -73,10 +74,10 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                       builder: (BuildContext context, List<String> value, _) {
                         return value.isNotEmpty
                             ? Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Wrap(
-                                spacing: 4.0,
-                                children: value
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Wrap(
+                                  spacing: 4.0,
+                                  children: value
                                       .map((tag) => Chip(
                                             label: Text(
                                               tag,
@@ -89,17 +90,18 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                                             side: const BorderSide(
                                                 color: kHighlightColor),
                                             deleteIcon: const Icon(
-                                              CupertinoIcons.clear_circled_solid,
+                                              CupertinoIcons
+                                                  .clear_circled_solid,
                                               color: kGreyColor,
                                               size: 20,
                                             ),
                                             onDeleted: () {
-                                              tags.value = List.from(tags.value)..remove(tag);
+                                              tags.value = List.from(tags.value)
+                                                ..remove(tag);
                                             },
                                           ))
                                       .toList(),
-                              )
-                            )
+                                ))
                             : Container();
                       },
                     ),
@@ -126,17 +128,17 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                       child: SolidTextButton(
                         text: "Save",
                         onPressed: () {
-                          if(formkKey.currentState?.validate() != true) return;
-                          
+                          if (formkKey.currentState?.validate() != true) return;
+
                           Navigator.of(context).pop();
-                          BlocProvider.of<LinkHomeBloc>(widget.blocContext).add(LinkHomeEvent.storeLinkDetails(
-                            LinkDetails(
-                              createdAt: DateTime.now(),
-                              link: linkController.text,
-                              description: descController.text,
-                              tags: tags.value
-                            )
-                          ));
+                          BlocProvider.of<LinkHomeBloc>(widget.blocContext).add(
+                              LinkHomeEvent.storeLinkDetails(LinkDetails(
+                                  createdAt: DateTime.now(),
+                                  link: linkController.text,
+                                  description: descController.text,
+                                  tags: tags.value
+                                      .map((e) => Tag(name: e))
+                                      .toList())));
                         },
                       ),
                     )

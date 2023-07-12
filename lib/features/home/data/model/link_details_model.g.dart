@@ -20,7 +20,7 @@ class LinkDetailsModelAdapter extends TypeAdapter<LinkDetailsModel> {
       link: fields[0] as String,
       createdAt: fields[1] as DateTime,
       description: fields[2] as String?,
-      tags: (fields[3] as List?)?.cast<String>(),
+      tags: (fields[3] as List?)?.cast<TagModel>(),
     );
   }
 

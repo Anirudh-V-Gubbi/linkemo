@@ -1,6 +1,7 @@
 // ignore_for_file: overridden_fields
 
 import 'package:hive/hive.dart';
+import 'package:linkemo/features/home/data/model/tag_model.dart';
 import 'package:linkemo/features/home/domain/entity/link_details.dart';
 
 part 'link_details_model.g.dart';
@@ -21,7 +22,7 @@ class LinkDetailsModel extends LinkDetails {
 
   @override
   @HiveField(3)
-  final List<String>? tags;
+  final List<TagModel>? tags;
 
   LinkDetailsModel(
       {required this.link,

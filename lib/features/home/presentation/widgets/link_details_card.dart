@@ -93,7 +93,7 @@ class LinkDetailsCard extends StatelessWidget {
                                   ),
                                   backgroundColor: kGreyCardColor,
                                   label: Text(
-                                    e,
+                                    e.name,
                                     style: const TextStyle(
                                       color: kHighlightColor,
                                     ),
