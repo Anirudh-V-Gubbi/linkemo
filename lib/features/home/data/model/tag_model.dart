@@ -11,5 +11,8 @@ class TagModel extends Tag {
   @HiveField(0)
   final String name;
 
-  TagModel({required this.name}) : super(name: name);
+  const TagModel({required this.name}) : super(name: name);
+
+  @override
+  List<Object?> get props => [super.props];
 }
