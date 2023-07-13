@@ -113,8 +113,9 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                         maxLength: 12,
                         hintText: 'Tags',
                         validatorMessage: "Tag already added",
-                        validator: (String? str) => tags.value.contains(str),
+                        validator: (String? str) => tags.value.contains(str?.trim()),
                         onFieldSubmitted: (value) {
+                          value = value?.trim();
                           if (value == null || value.isEmpty) return;
                           if (tags.value.contains(value)) return;
 
