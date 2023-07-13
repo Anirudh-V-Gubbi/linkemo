@@ -1,10 +1,15 @@
-import 'package:equatable/equatable.dart';
-
-class Tag extends Equatable{
+class Tag {
   final String name;
 
   const Tag({required this.name});
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    if (other is Tag && name != other.name) return false;
+    return true;
+  }
   
   @override
-  List<Object?> get props => [name];
+  int get hashCode => Object.hash(super.hashCode, name);
 }

@@ -14,5 +14,13 @@ class TagModel extends Tag {
   const TagModel({required this.name}) : super(name: name);
 
   @override
-  List<Object?> get props => [super.props];
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    if (!(super == other)) return false;
+    if (other is TagModel && name != other.name) return false;
+    return true;
+  }
+  
+  @override
+  int get hashCode => Object.hash(super.hashCode, name);
 }

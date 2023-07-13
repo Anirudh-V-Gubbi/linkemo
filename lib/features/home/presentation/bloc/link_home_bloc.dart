@@ -58,7 +58,7 @@ class LinkHomeBloc extends Bloc<LinkHomeEvent, LinkHomeState> {
     await storeLinkDetails(event.linkDetails);
 
     final List<Tag> newTags = List.from(event.linkDetails.tags ?? []);
-    newTags.removeWhere((ele) => tags.contains(TagModel(name: ele.name)));
+    newTags.removeWhere((ele) => tags.contains(ele));
     if (newTags.isNotEmpty) {
       await storeTag(newTags);
     }
