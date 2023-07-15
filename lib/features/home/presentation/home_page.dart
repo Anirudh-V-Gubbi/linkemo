@@ -1,4 +1,5 @@
 import 'package:draggable_fab/draggable_fab.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:linkemo/core/designs.dart';
@@ -19,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   BuildContext? blocContext;
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +56,14 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        Padding(
+                          padding: symmetricPadding(vertical: 12.0),
+                          child: CupertinoSearchTextField(
+                            controller: searchController,
+                            onChanged: (text) {},
+                            onSubmitted: (text) {},
+                          ),
+                        ),
                         FilterChips(tags: state.tags),
                         LinkDetailsList(detailsList: state.linkDetails)
                       ],
