@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:linkemo/core/designs.dart';
+import 'package:linkemo/core/strings.dart';
 import 'package:linkemo/features/home/data/model/link_details_model.dart';
 import 'package:linkemo/features/home/data/model/tag_model.dart';
 import 'package:linkemo/features/home/presentation/home_page.dart';
@@ -14,6 +15,12 @@ void main() async{
 
   // service locator initialization
   init();
+
+  // Hive tags initialisation
+  var box = await Hive.openBox<TagModel>(kAlltags);
+  if(box.isEmpty) {
+    box.add(const TagModel(name: "All"));
+  }
 
   runApp(const MyApp());
 }
