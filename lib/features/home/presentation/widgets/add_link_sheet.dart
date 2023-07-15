@@ -83,10 +83,10 @@ class _AddLinkSheetState extends State<AddLinkSheet> {
                                               tag,
                                               style: const TextStyle(
                                                   fontSize: 14,
-                                                  color: kWhiteColor,
+                                                  color: kHighlightColor,
                                                   overflow: TextOverflow.clip),
                                             ),
-                                            backgroundColor: kHighlightColor,
+                                            backgroundColor: kFilterSelectedColor,
                                             side: const BorderSide(
                                                 color: kHighlightColor),
                                             deleteIcon: const Icon(

@@ -6,6 +6,7 @@ import 'package:linkemo/core/utility.dart';
 import 'package:linkemo/features/home/domain/entity/link_details.dart';
 import 'package:linkemo/features/home/presentation/bloc/link_home_bloc.dart';
 import 'package:linkemo/features/home/presentation/widgets/add_link_sheet.dart';
+import 'package:linkemo/features/home/presentation/widgets/filter_chips.dart';
 import 'package:linkemo/features/home/presentation/widgets/link_details_list.dart';
 import 'package:linkemo/service_locator.dart';
 
@@ -50,25 +51,10 @@ class _HomePageState extends State<HomePage> {
                   padding: symmetricPadding(horizontal: 12.0),
                   child: SingleChildScrollView(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Wrap(
-                          spacing: 4.0,
-                          children: state.tags
-                              .map((tag) => Chip(
-                                    label: Text(
-                                      tag.name,
-                                      style: const TextStyle(
-                                          fontSize: 14,
-                                          color: kWhiteColor,
-                                          overflow: TextOverflow.clip),
-                                    ),
-                                    backgroundColor: kHighlightColor,
-                                    side: const BorderSide(
-                                        color: kHighlightColor),
-                                  ))
-                              .toList(),
-                        ),
+                        FilterChips(tags: state.tags),
                         LinkDetailsList(detailsList: state.linkDetails)
                       ],
                     ),
