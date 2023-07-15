@@ -21,6 +21,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   BuildContext? blocContext;
   final TextEditingController searchController = TextEditingController();
+  ValueNotifier<Map<String, dynamic>> filterNotifier =
+      ValueNotifier<Map<String, dynamic>>({"link": null, "tags": null});
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,9 @@ class _HomePageState extends State<HomePage> {
             listener: (context, state) {
               state.maybeMap(
                 storedLinkDetails: (state) {
+                  // Reset filters
+                  filterNotifier.value = {};
+
                   BlocProvider.of<LinkHomeBloc>(context)
                       .add(const LinkHomeEvent.getAllLinkDetails());
                 },
@@ -64,8 +69,14 @@ class _HomePageState extends State<HomePage> {
                             onSubmitted: (text) {},
                           ),
                         ),
-                        FilterChips(tags: state.tags),
-                        LinkDetailsList(detailsList: state.linkDetails)
+                        FilterChips(
+                          tags: state.tags,
+                          filterNotifier: filterNotifier,
+                        ),
+                        LinkDetailsList(
+                          detailsList: state.linkDetails,
+                          filters: filterNotifier,
+                        )
                       ],
                     ),
                   ),

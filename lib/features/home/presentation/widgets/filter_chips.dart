@@ -4,9 +4,12 @@ import 'package:linkemo/core/utility.dart';
 import 'package:linkemo/features/home/domain/entity/tag.dart';
 
 class FilterChips extends StatefulWidget {
-  const FilterChips({Key? key, required this.tags}) : super(key: key);
+  const FilterChips(
+      {Key? key, required this.tags, required this.filterNotifier})
+      : super(key: key);
 
   final List<Tag> tags;
+  final ValueNotifier<Map<String, dynamic>> filterNotifier;
 
   @override
   State<FilterChips> createState() => _FilterChipsState();
@@ -33,7 +36,9 @@ class _FilterChipsState extends State<FilterChips> {
   @override
   void didUpdateWidget(FilterChips oldWidget) {
     super.didUpdateWidget(oldWidget);
-    
+
+    if(oldWidget.tags == widget.tags) return;
+
     filters = List.generate(
         widget.tags.length, (index) => ValueNotifier<bool>(false));
 
@@ -63,8 +68,11 @@ class _FilterChipsState extends State<FilterChips> {
                           }
                         }
                         selectedFilters.clear();
-                        selectedFilters.add(tag);
                         filters[index].value = true;
+
+                        widget.filterNotifier.value["tags"] = null;
+                        widget.filterNotifier.value =
+                            Map.from(widget.filterNotifier.value);
                       }
                     } else {
                       if (value == false) {
@@ -75,11 +83,20 @@ class _FilterChipsState extends State<FilterChips> {
                         }
                         selectedFilters.add(tag);
                         filters[index].value = true;
+
+                        widget.filterNotifier.value["tags"] = selectedFilters;
+                        widget.filterNotifier.value =
+                            Map.from(widget.filterNotifier.value);
+
                       } else {
                         if (selectedFilters.length > 1) {
                           selectedFilters
                               .removeWhere((element) => element == tag);
                           filters[index].value = false;
+
+                          widget.filterNotifier.value["tags"] = selectedFilters;
+                          widget.filterNotifier.value =
+                              Map.from(widget.filterNotifier.value);
                         }
                       }
                     }
