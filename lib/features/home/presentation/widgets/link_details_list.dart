@@ -22,38 +22,39 @@ class _LinkDetailsListState extends State<LinkDetailsList> {
         ? ValueListenableBuilder(
             valueListenable: widget.filters,
             builder: (BuildContext context, Map<String, dynamic> filter, _) {
-              final filteredData = detailsList!.where((element) {
-                if(filter["text"] == null && filter["tags"] == null) {
-                  return true;
-                }
-                if (filter["text"] != null &&
-                    element.description?.contains(filter["text"]) == true) {
-                  return true;
-                }
-
-                if (filter["tags"] != null &&
-                    element.tags?.any(
-                            (element) => filter["tags"].contains(element)) ==
-                        true) {
-                  return true;
-                }
-
-                return false;
-              }).toList();
-
               return ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: filteredData.length,
+                itemCount: widget.detailsList!.length,
                 itemBuilder: (context, index) {
-                  return LinkDetailsCard(
-                    details: filteredData[index],
-                  );
+                  return _isInFilter(filter, widget.detailsList![index])
+                      ? LinkDetailsCard(
+                          details: widget.detailsList![index],
+                        )
+                      : const SizedBox.shrink();
                 },
               );
             })
         : const Center(
             child: Text("No Links are currently available"),
           );
+  }
+
+  bool _isInFilter(Map<String, dynamic> filter, LinkDetails element) {
+    if (filter["text"] == null && filter["tags"] == null) {
+      return true;
+    }
+    if (filter["text"] != null &&
+        element.description?.contains(filter["text"]) == true) {
+      return true;
+    }
+
+    if (filter["tags"] != null &&
+        element.tags?.any((element) => filter["tags"].contains(element)) ==
+            true) {
+      return true;
+    }
+
+    return false;
   }
 }
