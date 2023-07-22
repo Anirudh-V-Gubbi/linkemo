@@ -45,7 +45,10 @@ class _LinkDetailsListState extends State<LinkDetailsList> {
       return true;
     }
     if (filter["text"] != null &&
-        element.description?.contains(filter["text"]) == true) {
+        element.description
+                ?.toLowerCase()
+                .contains(filter["text"].toString().toLowerCase()) ==
+            true) {
       return true;
     }
 

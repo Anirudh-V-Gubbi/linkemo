@@ -1,14 +1,13 @@
 import 'package:draggable_fab/draggable_fab.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:linkemo/core/designs.dart';
 import 'package:linkemo/core/utility.dart';
-import 'package:linkemo/features/home/domain/entity/link_details.dart';
 import 'package:linkemo/features/home/presentation/bloc/link_home_bloc.dart';
 import 'package:linkemo/features/home/presentation/widgets/add_link_sheet.dart';
 import 'package:linkemo/features/home/presentation/widgets/filter_chips.dart';
 import 'package:linkemo/features/home/presentation/widgets/link_details_list.dart';
+import 'package:linkemo/features/home/presentation/widgets/search_bar.dart';
 import 'package:linkemo/service_locator.dart';
 
 class HomePage extends StatefulWidget {
@@ -63,10 +62,9 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Padding(
                           padding: symmetricPadding(vertical: 12.0),
-                          child: CupertinoSearchTextField(
-                            controller: searchController,
-                            onChanged: (text) {},
-                            onSubmitted: (text) {},
+                          child: SearchBar(
+                            searchController: searchController,
+                            filterNotifier: filterNotifier,
                           ),
                         ),
                         FilterChips(
